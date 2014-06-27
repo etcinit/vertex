@@ -1,3 +1,5 @@
+![logo](https://raw.githubusercontent.com/eduard44/vertex/master/logo.png)
+
 # Vertex
 
 A barebones Docker image with node, grunt and bower
