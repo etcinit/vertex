@@ -25,6 +25,21 @@ $ docker run -i -t vertex /bin/bash
 
 This will open a shell session inside the container
 
+## Getting started: Using Make
+
+Using `make` simplify the process:
+
+```
+$ cd vertex
+$ make
+```
+
+"Login" to the container:
+
+```
+$ make login
+```
+
 ## Dockerfiles and pre-built images
 
 The purpose of this dockerfile is to have a prebuilt image with some of the
