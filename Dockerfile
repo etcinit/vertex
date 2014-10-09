@@ -37,6 +37,3 @@ RUN bash -c "wget http://getcomposer.org/composer.phar && chmod +x composer.phar
 
 # Install PHPUnit
 RUN bash -c "wget https://phar.phpunit.de/phpunit.phar && chmod +x phpunit.phar && mv phpunit.phar /usr/local/bin/phpunit"
-
-# Install Laravel tool
-RUN bash -c "wget http://laravel.com/laravel.phar && chmod +x laravel.phar && mv laravel.phar /usr/local/bin/laravel"
