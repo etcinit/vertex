@@ -40,6 +40,30 @@ $ make
 $ make login
 ```
 
+## Using the default project
+
+Vertex is pre-configured with a default PHP project in `/var/www/vertex`. You may add a Laravel project to this directory or your own PHP framework here. Public files are assumed to be in `/var/www/vertex/public`. 
+
+This is useful if you're looking to get a server running a PHP project with the least amount of config possible
+
+Note: Make sure that when adding files, they are still executable by HHVM
+
+### Using Make:
+
+Start an Nginx server with HHVM at port 80:
+
+```
+$ make server
+```
+
+### Manually:
+
+Start an Nginx server with HHVM at port 80:
+
+```
+docker run -t -i -p 80:80 vertex
+```
+
 ## Dockerfiles and pre-built images
 
 The purpose of this dockerfile is to have a prebuilt image with some of the
