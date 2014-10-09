@@ -13,7 +13,7 @@ RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ precise universe" >> /etc/apt
 RUN apt-get update
 
 ## TOOLS
-RUN apt-get install -y vim wget git curl
+RUN apt-get install -y vim wget git curl build-essential make
 
 ## NODE.JS
 # Install Node and Git
