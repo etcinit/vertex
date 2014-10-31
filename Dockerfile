@@ -24,7 +24,7 @@ RUN npm install -g bower grunt-cli supervisor forever
 
 ## PHP, LARAVEL
 # Install Nginx
-RUN apt-get install -y nginx php5-fpm php5-cli php5-mcrypt && service nginx stop
+RUN apt-get install -y nginx php5-fpm php5-cli php5-mcrypt php5-curl && service nginx stop
 
 # Install HHVM
 RUN wget -O - http://dl.hhvm.com/conf/hhvm.gpg.key | sudo apt-key add -
