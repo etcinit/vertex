@@ -19,8 +19,8 @@ RUN apt-get install -y vim wget git curl build-essential make
 # Install Node and Git
 RUN apt-get install -y nodejs
 
-# Install Bower, Grunt, and some other tools
-RUN npm install -g bower grunt-cli supervisor forever
+# Install Gulp, Bower, Grunt, and some other tools
+RUN npm install -g gulp bower grunt-cli supervisor forever
 
 ## PHP, LARAVEL
 # Install Nginx
