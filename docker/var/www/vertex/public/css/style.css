@@ -1,0 +1,38 @@
+/**
+ * V E R T E X
+ * by Eduardo Trujillo <ed@chromabits.com>
+ */
+
+/** TYPOGRAPHY **/
+body {
+    color: #ffffff;
+
+    font-family: 'Ek Mukta', sans-serif;
+
+    background-color: #043958;
+}
+
+h1 {
+    color: #ffffff;
+
+    font-family: 'Ek Mukta', sans-serif;
+
+    font-weight: 800;
+}
+
+/** LAYOUT **/
+.logo {
+    width: 256px;
+    height: 256px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    background-image: url('../img/LogoLarge.png');
+    background-size: contain;
+}
+
+.pad-50-top {
+    padding-top: 50px;
+}
+
