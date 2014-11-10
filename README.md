@@ -2,9 +2,26 @@
 
 # Vertex
 
-A barebones Docker image with node, grunt and bower
+A barebones Docker image with essentials for PHP and Node.js developement and deployment
+
+#### Components included:
+
+- Nginx
+- HHVM
+- Node.js
+- NPM
+- Composer
+- Grunt
+- Bower
+- Gulp
+- PHPUnit
+- Vim
+
+Build status and docker stats: https://registry.hub.docker.com/u/eduard44/vertex/
 
 ## Getting started
+
+Getting a bash shell inside a Vertex container is easy:
 
 ### Using Docker Hub
 
@@ -50,7 +67,7 @@ $ docker run -i -t vertex /bin/bash
 
 This will open a shell session inside the container
 
-## Using the default project
+## Using the default PHP project
 
 Vertex is pre-configured with a default PHP project inside `/var/www/vertex`. You may add a Laravel project to this directory or your own PHP framework here. Public files are assumed to be in `/var/www/vertex/public`, which is where the  Nginx server will server files from.
 
@@ -135,10 +152,68 @@ CMD ["/opt/start.sh"]
 ```
 If you don't mount your project using the `-v` tag while using `docker run`, your code won't automatically update inside the container; it will only update during a `docker build`.
 
+Once you have a dockerfile you can build your application image (Here we will tag it as `myapp` for reference):
+
+```bash
+docker build -t myapp .
+```
+
+**Note:** Don't forget about the dot at the end
+
+After your image is built, you can run it:
+
+```bash
+docker run -ti -p 80:80 myapp
+```
+
+Additionally, you can mount a directory so that your code updates automatically:
+
+```bash
+docker run -ti -v "$(pwd):/var/www/vertex" -p 80:80 myapp
+```
+
 ### To download the standalone image:
 
 The image is usually automatically downloaded as part of the build process, but you can manually downloaded it by running the following:
 
+```bash
+docker pull eduard44/vertex
 ```
-$ docker pull eduard44/vertex
+
+## What about Node.js?
+
+Node.js projects can be setup without using `/opt/start.sh` since most Node.js project only require you to launch the server:
+
+```bash
+docker run -ti eduard44/vertex -v "$(pwd):/myapp" -p 3000:3000 node /myapp/index.js
 ```
+### Example dockerfile:
+
+Assuming that your application runs on port 3000:
+
+```bash
+FROM eduard44/vertex
+
+# Add the current directory into the image
+ADD . /myapp
+
+# Set the current working directory
+WORKDIR /myapp
+
+# Run composer update
+RUN npm install
+
+# Expose ports
+EXPOSE 3000
+
+# Logs volume
+VOLUME ["/myapp/logs"]
+
+# Start servers
+CMD ["node /myapp/index.js"]
+```
+
+## Resources
+
+- [Linking containers](https://docs.docker.com/userguide/dockerlinks/)
+- [Port forwarding](https://github.com/wsargent/docker-cheat-sheet#exposing-ports)
