@@ -32,6 +32,9 @@ RUN echo deb http://dl.hhvm.com/ubuntu trusty main | sudo tee /etc/apt/sources.l
 RUN apt-get update
 RUN apt-get install -y hhvm libgmp10 && /usr/share/hhvm/install_fastcgi.sh
 
+# Make HHVM the default interpreter
+RUN /usr/bin/update-alternatives --install /usr/bin/php php /usr/bin/hhvm 60
+
 # Install composer
 RUN bash -c "wget http://getcomposer.org/composer.phar && chmod +x composer.phar && mv composer.phar /usr/local/bin/composer"
 

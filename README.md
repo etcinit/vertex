@@ -94,22 +94,50 @@ docker run -t -i -p 80:80 vertex
 
 ## Dockerfiles and pre-built images
 
-The purpose of this dockerfile is to have a prebuilt image with some of the
-basic dependencies for a node.js project. The benefit? Speed. This image
-is built automatically at the Docker Hub and all you need to do is download it.
+The purpose of Vertex is to have a prebuilt image with some of the basic dependencies for a Node.js/PHP project. The benefit? Speed. This image
+is built automatically at the Docker Hub. If one of your projects uses it as a base image, you don't need to waste time downloading common dependencies like NPM or Composer.
 
 __To use it as part of a project:__
 
-Add the following line to the top of your docker file:
+Your project needs to have Dockerfile on the root directory of the project.
+
+Adding the following line to the top of your docker file specifies the base image:
 ```
 FROM eduard44/vertex
 ```
 
 Note: Remove `FROM ubuntu` if you were using ubuntu as the base image.
 
-__To download the standalone image:__
+### Dockerfile workflow
 
-Run the following commands:
+The following is an example of how to use Vertex in a PHP project:
+
+```bash
+FROM eduard44/vertex
+
+# Add the current directory into the image
+ADD . /var/www/vertex
+
+# Set the current working directory
+WORKDIR /var/www/vertex
+
+# Run composer update
+RUN composer update
+
+# Expose ports
+EXPOSE 80
+
+# Logs volume
+VOLUME ["/var/www/vertex/storage/logs"]
+
+# Start servers
+CMD ["/opt/start.sh"]
+```
+If you don't mount your project using the `-v` tag while using `docker run`, your code won't automatically update inside the container; it will only update during a `docker build`.
+
+### To download the standalone image:
+
+The image is usually automatically downloaded as part of the build process, but you can manually downloaded it by running the following:
 
 ```
 $ docker pull eduard44/vertex
