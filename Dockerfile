@@ -5,7 +5,7 @@ MAINTAINER Eduardo Trujillo <ed@chromabits.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install apt-add-repository tool
-RUN apt-get update && apt-get install -y wget curl
+RUN apt-get update && apt-get install -y wget curl python
 
 # Add source repositories
 RUN echo deb http://ppa.launchpad.net/chris-lea/node.js/ubuntu trusty main | sudo tee /etc/apt/sources.list.d/nodejs.list \
