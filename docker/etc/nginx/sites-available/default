@@ -1,15 +1,15 @@
 server {
-        listen 80 default_server;
-        listen [::]:80 default_server ipv6only=on;
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
 
-        root /var/www/vertex/public;
-        index index.php index.html index.htm;
+    root /var/www/vertex/public;
+    index index.php index.html index.htm;
 
-        # Make site accessible from http://localhost/
-        server_name localhost;
-        include hhvm.conf;
+    # Make site accessible from http://localhost/
+    server_name localhost;
+    include hhvm.conf;
 
-        location / {
-                try_files $uri $uri/ /index.php?$query_string;
-        }
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
 }

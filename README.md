@@ -1,4 +1,4 @@
-![logo](https://raw.githubusercontent.com/eduard44/vertex/master/logo.png)
+![logo](https://i.imgur.com/Ai4VtYt.png)
 
 # Vertex
 

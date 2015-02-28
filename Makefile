@@ -1,8 +1,8 @@
 all:
-	docker build -t vertex .
+	docker-compose build
 
 login:
-	docker run -t -i vertex /bin/bash
+	docker-compose run web sh /vertex/login.sh
 
 server:
-	docker run -t -i -p 80:80 vertex
+	docker-compose up

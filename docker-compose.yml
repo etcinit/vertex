@@ -1,0 +1,7 @@
+web:
+  build: .
+  ports:
+    - "80:80"
+  volumes:
+    - ".:/var/www/vertex"
+  dns: 8.8.8.8
