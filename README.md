@@ -9,9 +9,9 @@ A barebones Docker image with essentials for PHP and Node.js developement and de
 - Web servers: Nginx
 - Runtimes: HHVM, Node.js, Python 2.7
 - Package managers: NPM, Composer, Bower
-- Build tools: Gulp, Grunt
-- Testing: PHPUnit
-- Development: Vim, Git
+- Build tools: Gulp, Grunt, Babel (6to5)
+- Testing: PHPUnit, Mocha
+- Development: Vim, Git, Curl, Wget
 - Shells: Zsh with Oh-My-Zsh (default), Bash
 
 #### What's new in v2?

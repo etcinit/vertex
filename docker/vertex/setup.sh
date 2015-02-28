@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Install Gulp, Bower, Grunt, and other Node.js tools
-echo "[VERTEX] Installing Node.js bundle..."
-npm install -g gulp bower grunt-cli supervisor forever
-
 # Install composer
 echo "[VERTEX] Installing composer..."
 wget http://getcomposer.org/composer.phar
