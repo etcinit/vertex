@@ -202,7 +202,7 @@ FROM eduard44/vertex:2.0.0
 
 The following is an example of how to use Vertex in a PHP project:
 
-```bash
+```Dockerfile
 FROM eduard44/vertex:2.0.0
 
 # Add the current directory into the image
@@ -267,7 +267,7 @@ docker run -ti eduard44/vertex -v "$(pwd):/myapp" -p 3000:3000 node /myapp/index
 
 Assuming that your application runs on port 3000:
 
-```bash
+```Dockerfile
 FROM eduard44/vertex:2.0.0
 
 # Add the current directory into the image
