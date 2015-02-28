@@ -41,7 +41,7 @@ RUN cp /vertex/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
 USER root
 
 # Set permissions
-RUN chmod u+x /vertex/run.sh
+RUN chmod u+x /vertex/*.sh && ln -s /vertex/login.sh /usr/local/bin/begin
 RUN chown -R www-data:vertices /var/www/vertex
 
 # Append "daemon off;" to the beginning of the configuration so that Nginx
