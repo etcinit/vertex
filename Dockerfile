@@ -9,6 +9,7 @@ RUN apt-get update \
     && apt-get install -y wget curl python vim git build-essential make zsh
 
 COPY docker /
+COPY public /var/www/vertex/public
 
 # Add source repositories
 RUN sh /vertex/repos.sh

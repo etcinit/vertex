@@ -21,6 +21,7 @@ A barebones Docker image with essentials for PHP and Node.js developement and de
 - Support for Docker Compose: Direct use of the Docker engine is replaced with commands for Docker Compose, which automates  all the tasks provided by the Makefile in v1.
 - The user shell is now set to Zsh for both the `root` and `vertex` users. `vertex` also has Oh-my-zsh installed by default.
 - Upgraded to Ubuntu 14.10 from 14.04
+- Sample PHP project now displays the HHVM version instead of just "HipHop"
 
 #### Requirements
 
@@ -65,6 +66,8 @@ Alternatively, you may also just build the image:
 make
 ```
 
+> **NOTE:** These commands will only allow you to build and login to the container. They will not automatically bind ports for your servers. See the sections below for instructions on how to get servers running and binding ports.
+
 #### Option 2: Using Docker Compose
 
 With Docker Compose, it is also pretty easy to get a container running:
@@ -76,6 +79,8 @@ docker-compose build
 # Then, login:
 docker-compose run web begin
 ```
+
+> **NOTE:** These commands will only allow you to build and login to the container. They will not automatically bind ports for your servers. See the sections below for instructions on how to get servers running and binding ports.
 
 #### Option 3: Using the Docker CLI
 
@@ -93,6 +98,8 @@ docker run -it vertex begin
 # Allow a server to run on port 80:
 docker run -it -p 80:80 vertex begin
 ```
+
+> **NOTE:** Unlike options 1 and 2, the last command will actually bind a port for your HTTP server for you. See the sections below for instructions on how to get servers running and binding ports.
 
 ### Getting your files inside the container:
 
@@ -297,6 +304,10 @@ Some additional reading and resources:
 - [Managing data in containers](https://docs.docker.com/userguide/dockervolumes/)
 - [Linking containers](https://docs.docker.com/userguide/dockerlinks/)
 - [Port forwarding](https://github.com/wsargent/docker-cheat-sheet#exposing-ports)
+
+### Got questions? Found a bug?
+
+Open a ticket here on GitHub, or if you have a fix or improvement, create a Pull Request. Given that this is a Docker-only project there aren't any strict contribution rules around code. Just keep every line under 80 characters, add some descriptive comments, and it should be fine.
 
 ## License
 
