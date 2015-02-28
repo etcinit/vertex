@@ -21,7 +21,7 @@
         <h1>You have arrived</h1>
     </div>
     <div class="text-center">
-        <?php phpinfo(); ?>
+        <?php echo HHVM_VERSION; ?>
     </div>
 </body>
 </html>
