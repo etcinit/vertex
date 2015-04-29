@@ -1,18 +1,19 @@
-FROM ubuntu:14.10
+FROM google/debian:wheezy
 MAINTAINER Eduardo Trujillo <ed@chromabits.com>
 
 # Set environment to non-interactive
 ENV DEBIAN_FRONTEND noninteractive
-
-# Install apt-add-repository tool
-RUN apt-get update \
-    && apt-get install -y wget curl python vim git build-essential make zsh
 
 COPY docker /
 COPY public /var/www/vertex/public
 
 # Add source repositories
 RUN sh /vertex/repos.sh
+
+# Install apt-add-repository tool
+RUN apt-get update -y \
+    && apt-get install --no-install-recommends -y -q \
+    curl python build-essential git ca-certificates
 
 # Install HHVM and set it as the default interpreter
 RUN sh /vertex/components/nodejs.sh
