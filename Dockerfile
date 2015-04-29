@@ -7,31 +7,24 @@ ENV DEBIAN_FRONTEND noninteractive
 COPY docker /
 COPY public /var/www/vertex/public
 
-# Add source repositories
-RUN sh /vertex/repos.sh
-
-# Install apt-add-repository tool
-RUN apt-get update -y \
+# Add source repositories and install essential packages
+RUN sh /vertex/repos.sh; \
+    apt-get update -y \
     && apt-get install --no-install-recommends -y -q \
-    curl python build-essential git ca-certificates
+    curl python build-essential git ca-certificates; apt-get clean
 
-# Install HHVM and set it as the default interpreter
-RUN sh /vertex/components/nodejs.sh
-RUN sh /vertex/components/hhvm.sh
-RUN sh /vertex/components/zsh.sh
+# Install components, bundles, and then clean up
+RUN sh /vertex/components/nodejs.sh; \
+    sh /vertex/components/hhvm.sh; \
+    sh /vertex/components/zsh.sh; \
+    sh /vertex/setup.sh; \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Setup bundle
-RUN sh /vertex/setup.sh
+# Create groups and setup a non-root user
+RUN groupadd vertices; \
+    usermod -G vertices root && usermod -G vertices www-data; \
+    useradd -ms /bin/zsh vertex && usermod -G vertices vertex
 
-# Clean up
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Create groups
-RUN groupadd vertices
-RUN usermod -G vertices root && usermod -G vertices www-data
-
-# Setup a non-root user
-RUN useradd -ms /bin/zsh vertex && usermod -G vertices vertex
 ENV HOME /home/vertex
 USER vertex
 RUN cp /vertex/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
@@ -43,12 +36,8 @@ RUN cp /vertex/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
 USER root
 
 # Set permissions
-RUN chmod u+x /vertex/*.sh && ln -s /vertex/login.sh /usr/local/bin/begin
-RUN chown -R www-data:vertices /var/www/vertex
-
-# Append "daemon off;" to the beginning of the configuration so that Nginx
-# does not attempt to daemonize
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN chmod u+x /vertex/*.sh && ln -s /vertex/login.sh /usr/local/bin/begin; \
+    chown -R www-data:vertices /var/www/vertex
 
 # Expose ports
 EXPOSE 80
