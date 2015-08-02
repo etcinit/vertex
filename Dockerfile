@@ -11,14 +11,11 @@ COPY public /var/www/vertex/public
 RUN sh /vertex/repos.sh; \
     apt-get update -y \
     && apt-get install --no-install-recommends -y -q \
-    curl python build-essential git ca-certificates; apt-get clean
-
-# Install components, bundles, and then clean up
-RUN sh /vertex/components/nodejs.sh; \
+    curl python-minimal g++ gcc libc-dev make git ca-certificates; \
+    sh /vertex/components/nodejs.sh; \
     sh /vertex/components/hhvm.sh; \
-    sh /vertex/components/zsh.sh; \
     sh /vertex/setup.sh; \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    sh /vertex/clean.sh
 
 # Create groups and setup a non-root user
 RUN groupadd vertices; \
@@ -27,9 +24,7 @@ RUN groupadd vertices; \
 
 ENV HOME /home/vertex
 USER vertex
-RUN cp /vertex/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
-    && cp -R /vertex/.oh-my-zsh /home/vertex/.oh-my-zsh \
-    && echo "echo -e \"Welcome to \e[42;97mVERTEX\"" >> \
+RUN echo "echo -e \"Welcome to \e[42;97mVERTEX\"" >> \
     /home/vertex/.zshrc
 
 # Switch back to root
