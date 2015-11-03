@@ -14,7 +14,7 @@ A barebones Docker image with essentials for PHP and Node.js developement and de
 - Development: Vim, Git, Curl, Wget
 - Shells: Zsh with Oh-My-Zsh (default), Bash
 
-#### What's new in V3?
+#### What's new in v3?
 
 - Uses `google/debian` instead of `ubuntu`.
 - Newer version of inclided packages.
@@ -40,12 +40,12 @@ Build status and docker stats: https://registry.hub.docker.com/u/eduard44/vertex
 
 Getting a shell inside a Vertex container is easy, even if it is your first time using Docker:
 
-### Using Docker Hub
+### Using Quay.io
 
-Pull down a pre-built image from the Docker Hub, and run zsh inside the container afterwards:
+Pull down a pre-built image from the Quay.io, and run zsh inside the container afterwards:
 
 ```sh
-docker run -ti eduard44/vertex:2.0.0 begin
+docker run -ti quay.io/etcinit/vertex:3.0.0 begin
 ```
 
 ### From the source code:
@@ -130,7 +130,7 @@ docker run -ti vertex -v /home/user1/app:/opt/myapp
 If you are using Vertex as the base image of your project, you may add files to the image by using the `ADD` and `COPY` commands:
 
 ```Dockerfile
-FROM eduard44/vertex:2.0.0
+FROM quay.io/etcinit/vertex:3.0.0
 # ...
 
 # It is possible to override the default PHP project:
@@ -206,17 +206,17 @@ Your project needs to have Dockerfile on the root directory of the project. Revi
 
 Adding the following line to the top of your docker file specifies the base image:
 ```
-FROM eduard44/vertex:2.0.0
+FROM quay.io/etcinit/vertex:3.0.0
 ```
 
-> **NOTE:** Remove `FROM ubuntu` if you were using ubuntu as the base image. You can only have one base image. Vertex is based on Ubuntu 14.10
+> **NOTE:** Remove `FROM ubuntu` if you were using ubuntu as the base image. You can only have one base image. Vertex is based on Debian.
 
 #### Example usage:
 
 The following is an example of how to use Vertex in a PHP project:
 
 ```Dockerfile
-FROM eduard44/vertex:2.0.0
+FROM quay.io/etcinit/vertex:3.0.0
 
 # Add the current directory into the image
 # This replaces the default PHP project
@@ -281,7 +281,7 @@ docker run -ti eduard44/vertex -v "$(pwd):/myapp" -p 3000:3000 node /myapp/index
 Assuming that your application runs on port 3000:
 
 ```Dockerfile
-FROM eduard44/vertex:2.0.0
+FROM quay.io/etcinit/vertex:3.0.0
 
 # Add the current directory into the image
 ADD . /myapp
