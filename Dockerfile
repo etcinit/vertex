@@ -21,12 +21,12 @@ RUN sh /vertex/repos.sh; \
 # Create groups and setup a non-root user
 RUN groupadd vertices; \
     usermod -G vertices root && usermod -G vertices www-data; \
-    useradd -ms /bin/zsh vertex && usermod -G vertices vertex
+    useradd -ms /bin/bash vertex && usermod -G vertices vertex
 
 ENV HOME /home/vertex
 USER vertex
 RUN echo "echo -e \"Welcome to \e[42;97mVERTEX\"" >> \
-    /home/vertex/.zshrc
+    /home/vertex/.bash_profile
 
 # Switch back to root
 USER root
