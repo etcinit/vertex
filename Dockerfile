@@ -11,7 +11,7 @@ COPY public /var/www/vertex/public
 RUN sh /vertex/repos.sh; \
     apt-get update -y \
     && apt-get install --no-install-recommends -y -q \
-    curl python2.7 python2.7-minimal g++ gcc libc-dev make git \
+    curl python2.7 python2.7-minimal g++ gcc libc-dev make git sudo \
     ca-certificates; \
     sh /vertex/components/nodejs.sh; \
     sh /vertex/components/hhvm.sh; \
