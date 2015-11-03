@@ -1,4 +1,4 @@
-FROM google/debian:wheezy
+FROM debian:wheezy
 MAINTAINER Eduardo Trujillo <ed@chromabits.com>
 
 # Set environment to non-interactive

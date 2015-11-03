@@ -14,6 +14,12 @@ A barebones Docker image with essentials for PHP and Node.js developement and de
 - Development: Vim, Git, Curl, Wget
 - Shells: Zsh with Oh-My-Zsh (default), Bash
 
+#### What's new in V3?
+
+- Uses `google/debian` instead of `ubuntu`.
+- Newer version of inclided packages.
+- Image size optimizations.
+
 #### What's new in v2?
 
 - New default user: The user `vertex` and the group `vertices` are created so that your processes don't have to run as `root`. A home directory is provided and `/var/www/vertex` belongs ot the `vertices` group. _Note: HHVM and Nginx still currently require to run as `root`._
