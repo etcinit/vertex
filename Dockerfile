@@ -5,6 +5,7 @@ MAINTAINER Eduardo Trujillo <ed@chromabits.com>
 # Set environment to non-interactive
 ENV DEBIAN_FRONTEND noninteractive
 
+COPY docker /
 
 # Create groups and setup a non-root user
 RUN groupadd vertices; \
@@ -30,7 +31,6 @@ RUN sh /vertex/repos.sh; \
     sh /vertex/setup.sh; \
     sh /vertex/clean.sh
 
-COPY docker /
 COPY public /var/www/vertex/public
 
 # Set permissions
