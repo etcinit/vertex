@@ -24,8 +24,7 @@ USER root
 RUN sh /vertex/repos.sh; \
     apt-get update -y \
     && apt-get install --no-install-recommends -y -q \
-    curl python2.7 python2.7-minimal g++ gcc libc-dev make git sudo \
-    ca-certificates; \
+    curl ca-certificates; \
     sh /vertex/components/nodejs.sh; \
     sh /vertex/components/hhvm.sh; \
     sh /vertex/setup.sh; \
