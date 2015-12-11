@@ -11,8 +11,10 @@
 <head>
     <title>Welcome to Vertex</title>
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/foundation.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Ek+Mukta:400,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/foundation.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Ek+Mukta:400,800'
+        rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

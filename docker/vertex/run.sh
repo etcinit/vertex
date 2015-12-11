@@ -4,12 +4,7 @@
 chown -R www-data:vertices /var/www/
 chmod g+w /var/www
 
-# Start services (HHVM and Nginx)
+# Start services (HHVM)
 echo "[VERTEX] Starting HHVM server..."
-touch /var/log/hhvm/error.log
-service hhvm start
+/usr/bin/hhvm -m server -c /vertex/hhvm/server.ini -c /vertex/hhvm/site.ini
 
-echo "[VERTEX] Starting Nginx server..."
-nginx && tail -f /var/log/hhvm/error.log \
-    && tail -f /var/log/nginx/error.log \
-    && tail -f /var/log/nginx/access.log
