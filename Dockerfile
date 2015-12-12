@@ -24,7 +24,7 @@ USER root
 RUN sh /vertex/repos.sh; \
     apt-get update -y \
     && apt-get install --no-install-recommends -y -q \
-    curl ca-certificates; \
+    git curl ca-certificates; \
     sh /vertex/components/nodejs.sh; \
     sh /vertex/components/hhvm.sh; \
     sh /vertex/setup.sh; \

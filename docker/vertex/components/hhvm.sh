@@ -1,7 +1,8 @@
 #!/bin/sh
 
 echo "[VERTEX] Installing HHVM..."
-apt-get install -y -o Dpkg::Options::="--force-confold" hhvm libgmp10
+apt-get install --no-install-recommends -y \
+    -o Dpkg::Options::="--force-confold" hhvm libgmp10
 apt-get clean
 
 echo "[VERTEX] Setting up HHVM as the main PHP runtime..."
