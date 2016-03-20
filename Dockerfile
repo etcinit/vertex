@@ -21,7 +21,7 @@ RUN /opt/vertex/build/users.sh \
     && /opt/vertex/components/composer.sh \
     && /opt/vertex/build/clean.sh
 
-COPY public /var/www/vertex/public
+COPY site /var/www/vertex
 COPY LICENSE /opt/vertex/
 COPY README.md /opt/vertex/
 
