@@ -1,44 +1,37 @@
-FROM debian:wheezy
+FROM debian:jessie
 
 MAINTAINER Eduardo Trujillo <ed@chromabits.com>
 
 # Set environment to non-interactive
 ENV DEBIAN_FRONTEND noninteractive
+USER root
+ENV HOME=/home/vertex
 
-COPY docker /
+COPY root /
+
+# Make setup scripts executable
+RUN chmod u+x /opt/vertex/*.sh && chmod u+x /opt/vertex/*/**.sh
 
 # Create groups and setup a non-root user
-RUN groupadd vertices; \
-    usermod -G vertices root && usermod -G vertices www-data; \
-    useradd -ms /bin/bash vertex && usermod -G vertices vertex
-
-ENV HOME /home/vertex
-USER vertex
-RUN echo "echo -e \"Welcome to \e[42;97mVERTEX\"" >> \
-    /home/vertex/.bash_profile
-
-# Switch back to root
-USER root
-
-# Add source repositories and install essential packages
-RUN sh /vertex/repos.sh; \
-    apt-get update -y \
-    && apt-get install --no-install-recommends -y -q \
-    git curl ca-certificates; \
-    sh /vertex/components/nodejs.sh; \
-    sh /vertex/components/hhvm.sh; \
-    sh /vertex/setup.sh; \
-    sh /vertex/clean.sh
+RUN /opt/vertex/build/users.sh \
+    && /opt/vertex/build/repos.sh \
+    && /opt/vertex/components/base.sh \
+    && /opt/vertex/components/nodejs.sh \
+    && /opt/vertex/components/hhvm.sh \
+    && /opt/vertex/components/composer.sh \
+    && /opt/vertex/build/clean.sh
 
 COPY public /var/www/vertex/public
+COPY LICENSE /opt/vertex/
+COPY README.md /opt/vertex/
 
 # Set permissions
-RUN chmod u+x /vertex/*.sh && ln -s /vertex/login.sh /usr/local/bin/begin; \
-    chown -R www-data:vertices /var/www/vertex
+RUN /opt/vertex/build/post.sh \
+    && /opt/vertex/utils/report.sh
 
 # Expose ports
 EXPOSE 80
 
 VOLUME /var/www/vertex
 
-CMD ["/vertex/run.sh"]
+CMD ["/opt/vertex/run.sh"]

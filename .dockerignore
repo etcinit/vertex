@@ -1,1 +1,6 @@
 .git
+docker-compose-nomount.yml
+docker-compose.yml
+logo.png
+Makefile
+

@@ -1,0 +1,15 @@
+{
+    "name": "etcinit/vertex",
+    "type": "project",
+    "require": {
+        "erusev/parsedown": "^1.6",
+        "facebook/xhp-lib": "~2.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eduardo Trujillo",
+            "email": "ed@chromabits.com"
+        }
+    ]
+}

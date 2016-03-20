@@ -7,12 +7,20 @@ deployment.
 
 ## Batteries included:
 
-- Web servers: Proxygen (HHVM)
-- Runtimes: HHVM 3.11, Node.js 5.0, Python 2.7
-- Package managers: Composer, npm
-- Development: Git, Curl 
+- Web servers: Proxygen, Nginx (Optional)
+- Runtimes: HHVM 3.12.1, Node.js 5.9, Python 2.7.
+- Package managers: `composer`, `npm`.
+- Development: `git`, `curl`.
 
 ## Recent changes:
+
+**What's new in v4.0?:**
+
+- Upgraded to Debian Jessie (`google/debian` -> `debian`).
+- Updated packages: HHVM 3.12.1, Node.js 5.9.
+- New developer tools: `vmenu`, `vinstall`.
+- Nginx is available again, but it is not installed by default.
+- New build scripts.
 
 **What's new in v3.2?:**
 

@@ -1,0 +1,91 @@
+[
+    {
+        "name": "erusev/parsedown",
+        "version": "1.6.0",
+        "version_normalized": "1.6.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/erusev/parsedown.git",
+            "reference": "3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/erusev/parsedown/zipball/3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7",
+            "reference": "3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7",
+            "shasum": ""
+        },
+        "time": "2015-10-04 16:44:32",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Parsedown": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Emanuil Rusev",
+                "email": "hello@erusev.com",
+                "homepage": "http://erusev.com"
+            }
+        ],
+        "description": "Parser for Markdown.",
+        "homepage": "http://parsedown.org",
+        "keywords": [
+            "markdown",
+            "parser"
+        ]
+    },
+    {
+        "name": "facebook/xhp-lib",
+        "version": "2.2.4",
+        "version_normalized": "2.2.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/facebook/xhp-lib.git",
+            "reference": "8b770c8c0a7f59bbd7244a52d5044effa84ddf91"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/facebook/xhp-lib/zipball/8b770c8c0a7f59bbd7244a52d5044effa84ddf91",
+            "reference": "8b770c8c0a7f59bbd7244a52d5044effa84ddf91",
+            "shasum": ""
+        },
+        "require": {
+            "hhvm": "~3.6"
+        },
+        "require-dev": {
+            "91carriage/phpunit-hhi": "^5.1.0",
+            "phpunit/phpunit": "^5.1.0"
+        },
+        "time": "2016-01-20 18:48:31",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "Class library for XHP",
+        "homepage": "https://github.com/facebook/xhp-lib",
+        "keywords": [
+            "facebook",
+            "hack",
+            "hhvm",
+            "xhp"
+        ]
+    }
+]
