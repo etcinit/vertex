@@ -9,3 +9,5 @@ echo deb http://dl.hhvm.com/debian jessie-lts-3.12 main \
     | tee /etc/apt/sources.list.d/hhvm.list
 
 apt-get update -y
+
+apt-get dist-upgrade -y
