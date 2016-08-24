@@ -4,7 +4,6 @@ MAINTAINER Eduardo Trujillo <ed@chromabits.com>
 
 # Set environment to non-interactive
 ENV DEBIAN_FRONTEND noninteractive
-USER root
 ENV HOME=/home/vertex
 
 COPY root /
